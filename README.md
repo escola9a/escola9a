@@ -1,10 +1,10 @@
 # Web 9apoble9 (Astro)
 
-Web estática hecha con [Astro](https://docs.astro.build). Se genera en tu ordenador y se sube por FTP a cdmon.
+Web estática hecha con [Astro](https://docs.astro.build), publicada en GitHub Pages.
 
-- Catalán: `escolaescalada9a.com/`
-- Castellano: `escolaescalada9a.com/es/`
-- Inglés: `escolaescalada9a.com/en/`
+- Catalán: `https://escola9a.github.io/escola9a/`
+- Castellano: `https://escola9a.github.io/escola9a/es/`
+- Inglés: `https://escola9a.github.io/escola9a/en/`
 
 ## Cambiar un texto
 
@@ -29,30 +29,30 @@ Puntos de corte (responsive), solo estos tres: **600px** (móvil), **768px** (ta
 
 Sustituye el archivo en `src/assets/` manteniendo el nombre (`foto-climbing.jpeg`, `foto-kallpa.jpeg`, `foto-kids.jpeg`). Al generar la web, Astro crea versiones optimizadas.
 
-## Generar la web y subirla
+## Publicar la web
 
-Solo la primera vez: instala **Node.js 22.22 o superior** desde https://nodejs.org (versión LTS). Después, en una terminal dentro de esta carpeta:
+GitHub Actions genera y publica la web automáticamente al subir cambios a la rama `main`. También se puede iniciar manualmente desde la pestaña **Actions** del repositorio. La configuración de GitHub Pages debe tener **Source: GitHub Actions**.
+
+Para probar la web en tu ordenador, instala **Node.js 22.22 o superior** desde https://nodejs.org (versión LTS). Después, en una terminal dentro de esta carpeta:
 
 ```
 npm install
+npm run dev
 ```
 
-Cada vez que cambies algo:
+Para generar la web localmente:
 
 ```
 npm run build
 ```
 
-Se crea la carpeta `dist/`. Sube **su contenido** (no la carpeta en sí) a la carpeta de la web en el FTP:
+El resultado se crea en `dist/`. La configuración `base: "/escola9a"` es necesaria para publicar en la URL de proyecto de GitHub Pages.
 
-- `index.html`
-- `es/`
-- `en/`
-- `_astro/`
+### Cambiar al dominio propio
 
-Puedes borrar del servidor los `_astro/` antiguos si quieres, pero no hace falta. **No borres el `.htaccess`** del servidor.
+Cuando se quiera publicar en `escolaescalada9a.com`, cambia `site` en `astro.config.mjs` a `https://escolaescalada9a.com` y elimina la opción `base`. Añade `public/CNAME` con el texto `escolaescalada9a.com` y configura el dominio personalizado y sus DNS según GitHub Pages. El sitio dejará de publicarse en la ruta `/escola9a`.
 
-Para ver la web en tu ordenador mientras editas: `npm run dev` y abre la dirección que aparece (normalmente http://localhost:4321).
+GitHub Pages no aplica el `.htaccess` del antiguo hosting cdmon. Si se cambia el DNS, las reglas configuradas allí, incluida la CSP, dejarán de aplicarse; configura las cabeceras de seguridad en un servicio compatible si siguen siendo necesarias.
 
 ## Estructura
 

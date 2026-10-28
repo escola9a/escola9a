@@ -3,9 +3,10 @@ import { defineConfig } from "astro/config";
 
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-  site: "https://escolaescalada9a.com",
+  site: "https://escola9a.github.io",
+  base: "/escola9a",
 
-  // Web estàtica: es genera la carpeta dist/ i es puja per FTP.
+  // Web estàtica: es genera la carpeta dist/ per publicar-la a GitHub Pages.
   // Quan hi hagi servidor (VPS), s'afegirà l'adaptador @astrojs/node
   // i només les pàgines amb `export const prerender = false` aniran a servidor.
   output: "static",
