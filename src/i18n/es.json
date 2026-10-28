@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "title": "9apoble9 · Escalada Poblenou",
+    "description": "9apoble9 — Comunidad de escalada en Poblenou, Barcelona."
+  },
+  "nav": {
+    "about": "Nosotros",
+    "activities": "Actividades",
+    "book": "Reserva",
+    "location": "Dónde",
+    "faq": "FAQ",
+    "cta": "Reservar",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "languages": "Idioma"
+  },
+  "hero": {
+    "pill": "Comunidad · Escalada · Crecimiento",
+    "h1a": "No somos un",
+    "h1b": "rocódromo,",
+    "h1c": "somos comunidad.",
+    "text": "Un lugar donde la escalada se convierte en la herramienta para desarrollar la confianza, la constancia, la cooperación y el liderazgo. Sin edad ni experiencia requerida. Te acompañamos.",
+    "waBtn": "Habla con nosotros",
+    "actBtn": "Ver actividades",
+    "stat1Label": "Años acompañando",
+    "stat2Label": "Modalidades",
+    "stat3": "Todas las edades"
+  },
+  "marquee": ["CONFIANZA", "CONSTANCIA", "COOPERACIÓN", "LIDERAZGO", "COMUNIDAD", "ESCALADA", "POBLENOU"],
+  "photos": {
+    "climbingAlt": "Mujeres escalando en el rocódromo de 9apoble9",
+    "climbingCap": "Indoor · En el rocódromo",
+    "kidsAlt": "Monitor y niño en el rocódromo",
+    "kidsCap": "Extraescolares · Todas las edades",
+    "kallpaAlt": "Espai Kallpa",
+    "kallpaCap": "Espai Kallpa · Comunidad de mujeres"
+  },
+  "about": {
+    "tag": "Quiénes somos",
+    "title": "Tres piezas de un puzle",
+    "p1": "Somos un inglés, una francesa y una española — que aunque parezca un chiste, encajamos perfectamente. Junto a nuestro equipo de monitores y setters hacemos algo que la IA no puede hacer, porque viene de dentro.",
+    "p2": "Llevamos casi 10 años acompañando a niños y adultos en su desarrollo a través de los valores — con la escalada como herramienta, dentro y en la naturaleza.",
+    "values": ["Confianza", "Constancia", "Cooperación", "Liderazgo"],
+    "team": [
+      { "name": "The British one", "role": "Precisión técnica y visión internacional" },
+      { "name": "La Française", "role": "Elegancia en el movimiento y pedagogía" },
+      { "name": "La Española", "role": "Alma mediterránea y raíces en la comunidad" },
+      { "name": "+ Monitors & Setters", "role": "El equipo que da vida al espacio cada día" }
+    ]
+  },
+  "activities": {
+    "tag": "¿Qué necesitas?",
+    "title": "Dentro y fuera del espacio",
+    "sub": "Tanto si eres principiante como si llevas años escalando, tenemos algo para ti.",
+    "indoor": {
+      "label": "Indoor",
+      "title": "En el rocódromo",
+      "items": ["Cursos de iniciación", "Entrenamientos", "Entrenamiento personal", "Clases técnicas", "Clases de físico", "Extraescolares", "Baby Climbing"]
+    },
+    "outdoor": {
+      "label": "Outdoor",
+      "title": "En la roca",
+      "items": ["Bautizos", "Cursos de cuerda", "Entrenamientos en roca", "Salidas en familia", "Salidas deportivas", "Salidas boulder"]
+    },
+    "extra": {
+      "label": "Extras",
+      "title": "Eventos especiales",
+      "items": ["Campamentos", "Cumpleaños"]
+    }
+  },
+  "kallpa": {
+    "tag": "Espacio especial",
+    "title": "Espai Kallpa",
+    "badge": "Espacio de mujeres",
+    "text": "Un espacio creado por y para mujeres. Kallpa significa \"fuerza\" en quechua. Tu lugar para encontrar tu fuerza, tu comunidad y tu escalada.",
+    "imgAlt": "Espai Kallpa — mujeres escalando juntas"
+  },
+  "faq": {
+    "tag": "FAQ",
+    "title": "Preguntas frecuentes",
+    "moreQ": "¿Tienes otra pregunta?",
+    "moreLink": "Escríbenos por WhatsApp",
+    "items": [
+      {
+        "q": "¿Cuánto cuesta una entrada?",
+        "a": [
+          {
+            "p": "Una entrada en nuestro rocódromo tiene un coste de 10 €, independientemente de la hora a la que vengas."
+          }
+        ]
+      },
+      {
+        "q": "¿A qué edad se puede empezar a escalar?",
+        "a": [
+          {
+            "p": "Tenemos clases desde los 3 años: lo llamamos Baby Climbing y son los sábados."
+          },
+          {
+            "p": "A partir de 5 años ya tenemos clases todos los días. De 17:00 a 18:00 hay clases de 5 a 9 años, en diferentes grupos y con un máximo de 8 niñxs en la misma clase. Y de 18:00 a 19:00 ofrecemos clases de 10 a 16 años."
+          }
+        ]
+      },
+      {
+        "q": "¿Ofrecéis cursos para iniciarse en la escalada?",
+        "a": [
+          {
+            "p": "Disponemos de dos opciones si nunca has escalado:"
+          },
+          {
+            "ol": [
+              "Curso de iniciación: son los lunes de 19:30 a 20:30 y consta de 4 clases, una cada lunes. Suele empezar uno cada mes y tiene un coste de 55 €, con material incluido.",
+              "Reservar una clase de iniciación: tiene un coste de 45 € si es una persona sola y de 30 € por persona si sois más de una."
+            ]
+          }
+        ]
+      },
+      {
+        "q": "¿Tenéis grupos de entrenamiento de escalada?",
+        "a": [
+          {
+            "p": "Sí, ofrecemos entrenamientos de escalada en grupo. Las clases son de una hora y media. Los horarios son: lunes a las 20:00, y martes y jueves a las 19:00 y a las 20:00."
+          }
+        ]
+      },
+      {
+        "q": "¿Cuánto cuesta hacerse socix?",
+        "a": [
+          {
+            "p": "Tiene un coste de 47 € al mes, o de 130 € si lo pagas por trimestre."
+          }
+        ]
+      },
+      {
+        "q": "¿Cómo funciona el Espai Kallpa?",
+        "a": [
+          {
+            "p": "Es un espacio reservado para mujeres, los miércoles de 19:00 a 21:00. Tiene un coste de 10 €, como una entrada, y 2 € van destinados al proyecto Girl Power de la asociación Climb for Human Rights.",
+            "link": {
+              "text": "Climb for Human Rights",
+              "url": "https://climbforhumanrights.org"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "booking": {
+    "tag": "Cómo reservar",
+    "title": "¿Listo para empezar?",
+    "text": "Escríbenos directamente por WhatsApp. Te responderemos y te orientaremos sobre la actividad que mejor se adapte a ti o a tu hijo.",
+    "waBtn": "Escríbenos por WhatsApp",
+    "waText": "Hola! M'agradaria saber més sobre 9apoble9.",
+    "note": "620 08 12 05 · Te respondemos pronto",
+    "stepsTitle": "Cómo funciona",
+    "steps": [
+      "Envíanos un WhatsApp explicando quién eres y qué te interesa.",
+      "Te respondemos y te orientamos hacia la actividad ideal para ti.",
+      "Confirmamos la plaza y ¡nos vemos en el rocódromo!"
+    ]
+  },
+  "location": {
+    "tag": "Dónde estamos",
+    "title": "En el corazón de Poblenou",
+    "directions": "Cómo llegar"
+  },
+  "instagram": {
+    "title": "Últimos posts",
+    "more": "Ver en Instagram →",
+    "fallbackAlt": "Post de @9apoble9 en Instagram"
+  },
+  "footer": {
+    "copy": "Comunidad de escalada · Poblenou, Barcelona · 2026",
+    "book": "Reservar",
+    "location": "Dónde estamos"
+  }
+}

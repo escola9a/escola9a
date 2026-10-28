@@ -1,0 +1,48 @@
+/* ── TOKENS ─────────────────────────────────────────────────────────────
+   Colors, tipografies i espais de tota la web. Canvia-ho aquí i s'aplica a tot.
+
+   PUNTS DE TALL (responsive) — només es fan servir aquests tres:
+     600px  → mòbil          @media (max-width: 600px)
+     768px  → tauleta        @media (max-width: 768px)
+     900px  → portàtil petit @media (max-width: 900px)
+   (Les variables CSS no es poden fer servir dins de @media, per això estan documentats aquí.)
+   ──────────────────────────────────────────────────────────────────── */
+:root {
+  /* Base */
+  --cream: #F5F0E8;
+  --ink: #1a1a1a;
+  --muted: #6B6560;
+  --border: #DDD7CE;
+  --stone: #EDE5D8;
+
+  /* Marca */
+  --V: #71469C;     /* violeta */
+  --Vl: #F0E8F8;
+  --Vdk: #C9A2E8;   /* violeta clar per a fons foscos (contrast AA) */
+  --G: #59AC00;     /* verd */
+  --Gl: #F0F8E0;
+  --Gdk: #3D7700;   /* verd fosc per a text sobre fons clar */
+  --B: #034096;     /* blau */
+  --Bl: #E0E8F8;
+  --Bd: #022A6A;
+  --Blt: #8FB0EE;   /* blau clar per a fons foscos */
+  --L: #9B59D0;     /* lila Kallpa */
+  --Ll: #F3ECFC;
+  --Ld: #7A3AAD;
+  --WA: #25D366;    /* WhatsApp */
+  --WA-hover: #1ebe5d;
+
+  /* Text sobre fons fosc */
+  --on-dark: rgba(245, 240, 232, .75);
+  --on-dark-soft: rgba(245, 240, 232, .6);
+
+  /* Tipografies */
+  --f-display: "Bebas Neue", sans-serif;
+  --f-body: "Outfit", sans-serif;
+  --f-mono: "Space Mono", monospace;
+
+  /* Espais */
+  --gutter: clamp(18px, 5vw, 48px);
+  --sec-pad: clamp(56px, 8vw, 96px);
+  --max-w: 1200px;
+}

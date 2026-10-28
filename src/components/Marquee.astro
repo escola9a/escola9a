@@ -1,0 +1,21 @@
+---
+import { getDict } from "../i18n";
+const t = getDict(Astro.currentLocale);
+// La llista es repeteix dues vegades perquè l'animació sigui contínua.
+const words = [...t.marquee, ...t.marquee];
+---
+<div class="mq" aria-hidden="true">
+  <div class="mq-t">
+    {words.map((w) => (<><span class="mi">{w}</span><span class="ms"> · </span></>))}
+  </div>
+</div>
+
+<style>
+  .mq { overflow: hidden; padding: 13px 0; background: var(--B); border-bottom: 2px solid var(--Bd); }
+  .mq-t { white-space: nowrap; display: inline-block; animation: slide 28s linear infinite; }
+  .mq-t:hover { animation-play-state: paused; }
+  .mi { font-family: var(--f-display); font-size: 18px; letter-spacing: .15em; color: var(--cream); margin: 0 18px; }
+  .ms { color: rgba(255, 255, 255, .25); }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .mq-t { animation: none; } }
+</style>

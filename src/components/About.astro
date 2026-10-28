@@ -1,0 +1,72 @@
+---
+import { getDict } from "../i18n";
+const t = getDict(Astro.currentLocale);
+const [gb, fr, es, team] = t.about.team;
+---
+<section class="sec about on-dark" id="qui">
+  <div class="mw">
+    <div class="rv">
+      <p class="stag">{t.about.tag}</p>
+      <h2 class="sh">{t.about.title}</h2>
+    </div>
+    <div class="about-g">
+      <div class="about-text rv">
+        <p>{t.about.p1}</p>
+        <p>{t.about.p2}</p>
+        <div class="vals">
+          {t.about.values.map((v) => <span class="val">{v}</span>)}
+        </div>
+      </div>
+      <div class="team rv">
+        <div class="tc">
+          <span class="tc-flag tc-gb">
+            <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true"><clipPath id="fgb"><circle cx="30" cy="30" r="30"/></clipPath><g clip-path="url(#fgb)"><rect width="60" height="60" fill="#012169"/><path d="M0,0 60,60 M60,0 0,60" stroke="#fff" stroke-width="12"/><path d="M0,0 60,60 M60,0 0,60" stroke="#C8102E" stroke-width="7"/><path d="M30,0 V60 M0,30 H60" stroke="#fff" stroke-width="20"/><path d="M30,0 V60 M0,30 H60" stroke="#C8102E" stroke-width="12"/></g></svg>
+          </span>
+          <div><div class="tc-name">{gb.name}</div><div class="tc-role">{gb.role}</div></div>
+        </div>
+        <div class="tc">
+          <span class="tc-flag tc-fr">
+            <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true"><clipPath id="ffr"><circle cx="30" cy="30" r="30"/></clipPath><g clip-path="url(#ffr)"><rect width="20" height="60" fill="#0055A4"/><rect x="20" width="20" height="60" fill="#fff"/><rect x="40" width="20" height="60" fill="#EF4135"/></g></svg>
+          </span>
+          <div><div class="tc-name">{fr.name}</div><div class="tc-role">{fr.role}</div></div>
+        </div>
+        <div class="tc">
+          <span class="tc-flag tc-es">
+            <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true"><clipPath id="fes"><circle cx="30" cy="30" r="30"/></clipPath><g clip-path="url(#fes)"><rect width="60" height="60" fill="#AA151B"/><rect y="15" width="60" height="30" fill="#F1BF00"/></g></svg>
+          </span>
+          <div><div class="tc-name">{es.name}</div><div class="tc-role">{es.role}</div></div>
+        </div>
+        <div class="tc">
+          <span class="tc-flag tc-team">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--Vdk)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="16" cy="9" r="2.2"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M15 20c0-2 .8-3.5 2.5-4 2.2 0 3.5 1.5 3.5 4"/></svg>
+          </span>
+          <div><div class="tc-name">{team.name}</div><div class="tc-role">{team.role}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about { background: var(--ink); }
+  .about-g { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); margin-top: 40px; align-items: start; }
+  .about-text p { font-size: 15px; color: rgba(245, 240, 232, .62); line-height: 1.75; margin-bottom: 14px; }
+  .about-text p + p { margin-top: 14px; }
+  .vals { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .val { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 7px 14px; border: 2px solid var(--G); color: var(--G); transition: all .2s; }
+  .val:hover { background: var(--G); color: var(--ink); }
+
+  .team { display: flex; flex-direction: column; gap: 10px; }
+  .tc { display: flex; align-items: center; gap: 14px; background: rgba(245, 240, 232, .05); border: 1px solid rgba(245, 240, 232, .1); padding: 14px 18px; transition: background .2s; }
+  .tc:hover { background: rgba(245, 240, 232, .1); }
+  .tc-flag { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 2px solid; }
+  .tc-flag svg { display: block; }
+  .tc-gb { border-color: var(--V); }
+  .tc-fr { border-color: var(--G); }
+  .tc-es { border-color: var(--B); }
+  .tc-team { border-color: var(--L); background: rgba(155, 89, 208, .18); }
+  .tc-name { font-size: 15px; font-weight: 600; color: var(--cream); }
+  .tc-role { font-size: 13px; color: rgba(245, 240, 232, .72); margin-top: 2px; }
+
+  @media (max-width: 768px) { .about-g { grid-template-columns: 1fr; } }
+</style>

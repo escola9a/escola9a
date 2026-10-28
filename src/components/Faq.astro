@@ -1,0 +1,94 @@
+---
+// Preguntes freqüents. Els textos són a src/i18n/*.json → "faq".
+// Cada resposta és una llista de blocs:
+//   { "p": "paràgraf" }                                  → paràgraf
+//   { "p": "...", "link": { "text": "...", "url": "..." } } → paràgraf amb un enllaç sobre "text"
+//   { "ol": ["...", "..."] }                             → llista numerada
+import { getDict, SITE } from "../i18n";
+const t = getDict(Astro.currentLocale);
+const f = t.faq;
+const waUrl = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(t.booking.waText)}`;
+
+type Block = { p?: string; link?: { text: string; url: string }; ol?: string[] };
+
+// Separa el paràgraf al voltant del text de l'enllaç (si no el troba, l'afegeix al final).
+function splitLink(p: string, text: string) {
+  const i = p.indexOf(text);
+  return i === -1 ? { before: p + " ", after: "" } : { before: p.slice(0, i), after: p.slice(i + text.length) };
+}
+---
+<section class="sec faq" id="faq">
+  <div class="mw">
+    <div class="rv">
+      <p class="stag">{f.tag}</p>
+      <h2 class="sh">{f.title}</h2>
+    </div>
+
+    <div class="faq-list rv">
+      {f.items.map((item) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>{item.q}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            {(item.a as Block[]).map((b) =>
+              b.ol ? (
+                <ol>{b.ol.map((li) => <li>{li}</li>)}</ol>
+              ) : b.link ? (
+                (() => {
+                  const { before, after } = splitLink(b.p ?? "", b.link!.text);
+                  return <p>{before}<a href={b.link!.url} target="_blank" rel="noopener">{b.link!.text}</a>{after}</p>;
+                })()
+              ) : (
+                <p>{b.p}</p>
+              )
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="faq-more rv">
+      {f.moreQ} <a href={waUrl} target="_blank" rel="noopener">{f.moreLink}&nbsp;→</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .faq { background: var(--cream); border-top: 2px solid var(--ink); }
+  .faq-list { margin-top: 36px; border-top: 2px solid var(--ink); max-width: 860px; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px 0; cursor: pointer; list-style: none;
+    font-size: clamp(16px, 2vw, 19px); font-weight: 600; color: var(--ink);
+    transition: color .2s;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q:hover { color: var(--V); }
+
+  /* Icona + / − */
+  .faq-icon { position: relative; width: 28px; height: 28px; flex-shrink: 0; border: 2px solid currentColor; }
+  .faq-icon::before, .faq-icon::after {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px;
+    background: currentColor; transform: translate(-50%, -50%); transition: transform .2s;
+  }
+  .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+  .faq-item[open] .faq-q { color: var(--V); }
+
+  .faq-a { padding: 0 44px 22px 0; }
+  .faq-a p, .faq-a li { font-size: 15px; line-height: 1.7; color: var(--muted); }
+  .faq-a p + p, .faq-a p + ol, .faq-a ol + p { margin-top: 10px; }
+  .faq-a ol { padding-left: 22px; }
+  .faq-a li + li { margin-top: 8px; }
+  .faq-a li::marker { font-family: var(--f-mono); color: var(--V); font-weight: 700; }
+  .faq-a a, .faq-more a { color: var(--V); text-decoration: underline; text-underline-offset: 3px; }
+  .faq-a a:hover, .faq-more a:hover { color: var(--ink); }
+
+  .faq-more { margin-top: 28px; font-size: 15px; color: var(--ink); }
+  .faq-more a { font-weight: 600; }
+
+  @media (max-width: 600px) { .faq-a { padding-right: 0; } }
+</style>

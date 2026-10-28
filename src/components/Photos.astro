@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import { getDict } from "../i18n";
+import climbing from "../assets/foto-climbing.jpeg";
+import kids from "../assets/foto-kids.jpeg";
+import kallpa from "../assets/foto-kallpa.jpeg";
+const t = getDict(Astro.currentLocale);
+
+const photos = [
+  { src: climbing, alt: t.photos.climbingAlt, cap: t.photos.climbingCap },
+  { src: kids, alt: t.photos.kidsAlt, cap: t.photos.kidsCap },
+  { src: kallpa, alt: t.photos.kallpaAlt, cap: t.photos.kallpaCap },
+];
+---
+<div class="photos">
+  {photos.map((p) => (
+    <figure class="photo">
+      <Image src={p.src} alt={p.alt} widths={[480, 800, 1200]} sizes="(max-width: 600px) 100vw, 33vw" loading="lazy" />
+      <figcaption class="photo-cap">{p.cap}</figcaption>
+    </figure>
+  ))}
+</div>
+
+<style>
+  .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; background: var(--ink); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .photo { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s, filter .5s; filter: saturate(.85); }
+  .photo:hover img { transform: scale(1.04); filter: saturate(1); }
+  .photo-cap {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .78)); padding: 28px 14px 10px;
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #fff;
+  }
+  @media (max-width: 600px) { .photos { grid-template-columns: 1fr; } .photo { aspect-ratio: 16 / 9; } }
+</style>

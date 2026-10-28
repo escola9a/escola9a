@@ -1,0 +1,41 @@
+---
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { LOCALES, DEFAULT_LOCALE, getDict } from "../i18n";
+import "../styles/base.css";
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const t = getDict(locale);
+---
+<!doctype html>
+<html lang={locale}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{t.meta.title}</title>
+  <meta name="description" content={t.meta.description} />
+  <link rel="canonical" href={getAbsoluteLocaleUrl(locale)} />
+  {LOCALES.map((l) => <link rel="alternate" hreflang={l} href={getAbsoluteLocaleUrl(l)} />)}
+  <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl(DEFAULT_LOCALE)} />
+
+  <!-- Marca que el JS funciona (per a l'animació d'aparició). -->
+  <script is:inline>document.documentElement.classList.add("js")</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://feeds.behold.so" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <slot />
+
+  <script>
+    // Aparició de les seccions en fer scroll
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".rv").forEach((el) => ro.observe(el));
+  </script>
+</body>
+</html>

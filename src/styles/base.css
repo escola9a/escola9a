@@ -1,0 +1,44 @@
+/* ── BASE ─────────────────────────────────────────────────────────────
+   Reset, estils generals i peces que es fan servir a diverses seccions.
+   Els estils propis de cada secció són dins del seu component (src/components).
+   ──────────────────────────────────────────────────────────────────── */
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-body); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+:focus-visible { outline: 3px solid var(--V); outline-offset: 3px; }
+
+/* Contenidor i secció */
+.mw { max-width: var(--max-w); margin-inline: auto; padding-inline: var(--gutter); }
+.sec { padding-block: var(--sec-pad); }
+
+/* Aparició en fer scroll — només si el JS funciona (classe .js al <html>) */
+.js .rv { opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .5s; }
+.js .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+}
+
+/* Etiqueta de secció  "// QUI SOM" */
+.stag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--V); margin-bottom: 10px; }
+.stag::before { content: "// "; }
+.on-dark .stag { color: var(--Vdk); }
+
+/* Títol de secció */
+.sh { font-family: var(--f-display); font-size: clamp(34px, 5.5vw, 68px); line-height: .93; color: var(--ink); }
+.on-dark .sh { color: var(--cream); }
+
+/* Botó WhatsApp */
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--WA); color: #fff;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; font-weight: 700;
+  padding: 13px clamp(14px, 2vw, 24px); border: 2px solid var(--WA); transition: all .2s;
+}
+.btn-wa:hover { background: var(--WA-hover); border-color: var(--WA-hover); }
+.wai { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }

@@ -1,0 +1,32 @@
+---
+// Selector d'idioma: cada botó és un enllaç a la mateixa pàgina en l'altre idioma.
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { LOCALES, DEFAULT_LOCALE, getDict } from "../i18n";
+
+interface Props { variant: "nav" | "menu" }
+const { variant } = Astro.props;
+const current = Astro.currentLocale ?? DEFAULT_LOCALE;
+const t = getDict(current);
+---
+<nav class:list={["lsw", variant]} aria-label={t.nav.languages}>
+  {LOCALES.map((l) => (
+    <a href={getRelativeLocaleUrl(l)} hreflang={l} lang={l}
+       class:list={{ on: l === current }} aria-current={l === current ? "page" : undefined}>
+      {l.toUpperCase()}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .lsw { display: flex; }
+  .lsw a { font-family: var(--f-mono); text-transform: uppercase; transition: all .2s; }
+
+  .nav { border: 1.5px solid var(--border); }
+  .nav a { font-size: 11px; padding: 6px 10px; color: var(--muted); }
+  .nav a:hover { color: var(--ink); }
+  .nav a.on { background: var(--ink); color: var(--cream); }
+
+  .menu { margin-top: 8px; }
+  .menu a { font-size: 11px; padding: 8px 16px; color: var(--on-dark); border: 1px solid rgba(245, 240, 232, .3); }
+  .menu a.on { background: var(--V); color: #fff; border-color: var(--V); }
+</style>

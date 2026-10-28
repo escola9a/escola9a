@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "title": "9apoble9 · Escalada Poblenou",
+    "description": "9apoble9 — Climbing community in Poblenou, Barcelona."
+  },
+  "nav": {
+    "about": "About",
+    "activities": "Activities",
+    "book": "Book",
+    "location": "Location",
+    "faq": "FAQ",
+    "cta": "Book",
+    "menu": "Menu",
+    "close": "Close",
+    "languages": "Language"
+  },
+  "hero": {
+    "pill": "Community · Climbing · Growth",
+    "h1a": "We're not a",
+    "h1b": "climbing gym,",
+    "h1c": "we're community.",
+    "text": "A place where climbing becomes the tool to develop trust, consistency, cooperation and leadership. No age or experience required. We guide you.",
+    "waBtn": "Talk to us",
+    "actBtn": "See activities",
+    "stat1Label": "Years guiding",
+    "stat2Label": "Modalities",
+    "stat3": "All ages"
+  },
+  "marquee": ["TRUST", "CONSISTENCY", "COOPERATION", "LEADERSHIP", "COMMUNITY", "CLIMBING", "POBLENOU"],
+  "photos": {
+    "climbingAlt": "Women climbing at the 9apoble9 gym",
+    "climbingCap": "Indoor · At the gym",
+    "kidsAlt": "Coach and child at the climbing gym",
+    "kidsCap": "After-school · All ages",
+    "kallpaAlt": "Espai Kallpa",
+    "kallpaCap": "Espai Kallpa · Women's space"
+  },
+  "about": {
+    "tag": "Who we are",
+    "title": "Three pieces of a puzzle",
+    "p1": "We're a British, a French and a Spanish — which sounds like a joke, but we fit perfectly. Together with our coaches and setters we do something AI can't: it comes from within.",
+    "p2": "For nearly 10 years we've been guiding children and adults through value-based development — using climbing as the tool, indoors and in nature.",
+    "values": ["Trust", "Consistency", "Cooperation", "Leadership"],
+    "team": [
+      { "name": "The British one", "role": "Technical precision and international vision" },
+      { "name": "La Française", "role": "Movement elegance and pedagogy" },
+      { "name": "La Española", "role": "Mediterranean soul and community roots" },
+      { "name": "+ Monitors & Setters", "role": "The team that brings the space to life daily" }
+    ]
+  },
+  "activities": {
+    "tag": "What do you need?",
+    "title": "Inside and outside",
+    "sub": "Whether you're a beginner or experienced, we have something for you.",
+    "indoor": {
+      "label": "Indoor",
+      "title": "At the gym",
+      "items": ["Beginner courses", "Training", "Personal training", "Technical classes", "Fitness classes", "After-school", "Baby Climbing"]
+    },
+    "outdoor": {
+      "label": "Outdoor",
+      "title": "On the rock",
+      "items": ["First climbs", "Rope courses", "Rock training", "Family outings", "Sport outings", "Boulder trips"]
+    },
+    "extra": {
+      "label": "Extras",
+      "title": "Special events",
+      "items": ["Camps", "Birthdays"]
+    }
+  },
+  "kallpa": {
+    "tag": "Special space",
+    "title": "Espai Kallpa",
+    "badge": "Women's space",
+    "text": "A space created by and for women. Kallpa means \"strength\" in Quechua. Your place to find your strength, your community and your climbing.",
+    "imgAlt": "Espai Kallpa — women climbing together"
+  },
+  "faq": {
+    "tag": "FAQ",
+    "title": "Frequently asked questions",
+    "moreQ": "Got another question?",
+    "moreLink": "Write to us on WhatsApp",
+    "items": [
+      {
+        "q": "How much is a day pass?",
+        "a": [
+          {
+            "p": "A day pass at our climbing gym costs €10, whatever time you come."
+          }
+        ]
+      },
+      {
+        "q": "At what age can you start climbing?",
+        "a": [
+          {
+            "p": "We have classes from age 3: we call it Baby Climbing, and it's on Saturdays."
+          },
+          {
+            "p": "From age 5 we have classes every day. From 17:00 to 18:00 there are classes for ages 5 to 9, in different groups with a maximum of 8 kids per class. And from 18:00 to 19:00 we offer classes for ages 10 to 16."
+          }
+        ]
+      },
+      {
+        "q": "Do you offer beginner courses?",
+        "a": [
+          {
+            "p": "If you've never climbed before, there are two options:"
+          },
+          {
+            "ol": [
+              "Beginner course: Mondays from 19:30 to 20:30, made up of 4 classes, one each Monday. A new one usually starts every month, and it costs €55, gear included.",
+              "Book a beginner class: €45 for one person, or €30 per person if there are more of you."
+            ]
+          }
+        ]
+      },
+      {
+        "q": "Do you have climbing training groups?",
+        "a": [
+          {
+            "p": "Yes, we run group climbing training. Sessions last an hour and a half. Times: Mondays at 20:00, and Tuesdays and Thursdays at 19:00 and 20:00."
+          }
+        ]
+      },
+      {
+        "q": "How much is membership?",
+        "a": [
+          {
+            "p": "€47 per month, or €130 if you pay per quarter."
+          }
+        ]
+      },
+      {
+        "q": "How does Espai Kallpa work?",
+        "a": [
+          {
+            "p": "It's a women-only space, on Wednesdays from 19:00 to 21:00. It costs €10, the same as a day pass, and €2 goes to the Girl Power project of the association Climb for Human Rights.",
+            "link": {
+              "text": "Climb for Human Rights",
+              "url": "https://climbforhumanrights.org"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "booking": {
+    "tag": "How to book",
+    "title": "Ready to start?",
+    "text": "Write to us directly on WhatsApp. We'll reply and guide you towards the activity that best suits you or your child.",
+    "waBtn": "Write to us on WhatsApp",
+    "waText": "Hola! M'agradaria saber més sobre 9apoble9.",
+    "note": "620 08 12 05 · We reply quickly",
+    "stepsTitle": "How it works",
+    "steps": [
+      "Send us a WhatsApp telling us who you are and what interests you.",
+      "We reply and guide you towards the ideal activity for you.",
+      "We confirm your spot and see you at the gym!"
+    ]
+  },
+  "location": {
+    "tag": "Where we are",
+    "title": "In the heart of Poblenou",
+    "directions": "Get directions"
+  },
+  "instagram": {
+    "title": "Latest posts",
+    "more": "See on Instagram →",
+    "fallbackAlt": "Post by @9apoble9 on Instagram"
+  },
+  "footer": {
+    "copy": "Climbing community · Poblenou, Barcelona · 2026",
+    "book": "Book",
+    "location": "Location"
+  }
+}

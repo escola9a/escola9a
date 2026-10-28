@@ -1,0 +1,42 @@
+---
+import { getDict, SITE } from "../i18n";
+import Icon from "./Icon.astro";
+import InstagramFeed from "./InstagramFeed.astro";
+const t = getDict(Astro.currentLocale);
+---
+<section class="sec loc" id="on">
+  <div class="mw">
+    <div class="rv">
+      <p class="stag">{t.location.tag}</p>
+      <h2 class="loc-h">{t.location.title}</h2>
+      <a href={SITE.mapsUrl} target="_blank" rel="noopener" class="loc-addr">
+        <Icon name="pin" size={20} />
+        <span>{SITE.addressLine1}<br />{SITE.addressLine2}</span>
+      </a>
+      <div class="loc-links">
+        <a href={SITE.mapsUrl} target="_blank" rel="noopener" class="loc-map-btn">
+          <Icon name="map" />{t.location.directions}
+        </a>
+        <a href={SITE.instagramUrl} target="_blank" rel="noopener" class="loc-ig-btn">
+          <Icon name="instagram" />@{SITE.instagramUser}
+        </a>
+      </div>
+    </div>
+    <InstagramFeed />
+  </div>
+</section>
+
+<style>
+  .loc { background: var(--stone); }
+  .loc-h { font-family: var(--f-display); font-size: clamp(32px, 5vw, 60px); line-height: .93; color: var(--ink); margin-bottom: 24px; }
+  .loc-addr { display: flex; align-items: flex-start; gap: 12px; color: var(--ink); margin-bottom: 24px; transition: color .2s; }
+  .loc-addr:hover { color: var(--V); }
+  .loc-addr :global(svg) { color: var(--V); flex-shrink: 0; margin-top: 2px; }
+  .loc-addr span { font-size: 16px; line-height: 1.5; font-weight: 500; }
+  .loc-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .loc-map-btn, .loc-ig-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 11px 18px; transition: all .2s; }
+  .loc-map-btn { background: var(--ink); color: var(--cream); border: 2px solid var(--ink); }
+  .loc-map-btn:hover { background: var(--V); border-color: var(--V); }
+  .loc-ig-btn { background: transparent; color: var(--V); border: 2px solid var(--V); }
+  .loc-ig-btn:hover { background: var(--V); color: #fff; }
+</style>

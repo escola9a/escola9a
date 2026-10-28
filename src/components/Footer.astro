@@ -1,0 +1,43 @@
+---
+import { getDict, SITE } from "../i18n";
+const t = getDict(Astro.currentLocale);
+---
+<footer>
+  <div class="footer-g mw">
+    <div>
+      <div class="footer-logo"><span class="v">9a</span><span class="d">poble</span><span class="v">9</span></div>
+      <p class="footer-copy">{t.footer.copy}</p>
+    </div>
+    <nav class="footer-links">
+      <a href="#qui">{t.nav.about}</a>
+      <a href="#act">{t.nav.activities}</a>
+      <a href="#faq">{t.nav.faq}</a>
+      <a href="#res">{t.footer.book}</a>
+      <a href="#on">{t.footer.location}</a>
+      <a href={SITE.instagramUrl} target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+  <div class="footer-bot mw">
+    <span>9apoble9 · Poblenou, Barcelona</span>
+    <span>Built by <span class="fs">Folletto Systems</span></span>
+  </div>
+</footer>
+
+<style>
+  footer { background: var(--ink); padding: clamp(40px, 6vw, 56px) clamp(18px, 4vw, 40px) clamp(20px, 4vw, 32px); }
+  .footer-g { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; border-bottom: 1px solid rgba(245, 240, 232, .1); padding-bottom: 24px; margin-bottom: 18px; }
+  .footer-logo { font-family: var(--f-display); font-size: clamp(24px, 4vw, 32px); letter-spacing: 2px; }
+  .footer-logo .v { color: var(--Vdk); }
+  .footer-logo .d { color: var(--cream); }
+  .footer-copy { font-size: 13px; color: rgba(245, 240, 232, .7); margin-top: 7px; line-height: 1.5; }
+  .footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; }
+  .footer-links a { font-size: 14px; color: var(--on-dark); transition: color .2s; }
+  .footer-links a:hover { color: var(--G); }
+  .footer-bot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .footer-bot > span { font-family: var(--f-mono); font-size: 11px; color: var(--on-dark-soft); }
+  .fs { color: var(--Blt); }
+  @media (max-width: 600px) {
+    .footer-g { grid-template-columns: 1fr; }
+    .footer-links { align-items: flex-start; }
+  }
+</style>

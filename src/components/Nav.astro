@@ -1,0 +1,71 @@
+---
+import { getDict, SITE } from "../i18n";
+import LangSwitch from "./LangSwitch.astro";
+import Icon from "./Icon.astro";
+const t = getDict(Astro.currentLocale);
+---
+<header class="nav" id="nav">
+  <a href="#" class="nav-logo"><span class="v">9a</span><span>poble</span><span class="v">9</span></a>
+  <nav class="nav-links">
+    <a href="#qui">{t.nav.about}</a>
+    <a href="#act">{t.nav.activities}</a>
+    <a href="#faq">{t.nav.faq}</a>
+    <a href="#res">{t.nav.book}</a>
+    <a href="#on">{t.nav.location}</a>
+  </nav>
+  <div class="nav-r">
+    <a href={SITE.instagramUrl} target="_blank" rel="noopener" class="nav-ig" aria-label={`Instagram @${SITE.instagramUser}`}>
+      <Icon name="instagram" size={17} />
+    </a>
+    <div class="nav-lang"><LangSwitch variant="nav" /></div>
+    <a href="#res" class="nav-cta">{t.nav.cta}</a>
+  </div>
+  <button class="burger" id="burger" aria-label={t.nav.menu} aria-expanded="false" aria-controls="mm">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<script>
+  const nav = document.getElementById("nav")!;
+  window.addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 40), { passive: true });
+</script>
+
+<style>
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 13px clamp(18px, 4vw, 36px);
+    background: rgba(245, 240, 232, .96); backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--ink); transition: box-shadow .25s;
+  }
+  .nav.scrolled { box-shadow: 0 2px 16px rgba(0, 0, 0, .06); }
+  .nav-logo { font-family: var(--f-display); font-size: 24px; letter-spacing: 2px; line-height: 1; color: var(--ink); }
+  .nav-logo .v { color: var(--V); }
+
+  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); }
+  .nav-links a { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-r { display: flex; align-items: center; gap: 10px; }
+  .nav-ig { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--ink); border: 2px solid var(--ink); transition: all .2s; }
+  .nav-ig:hover, .nav-ig:focus-visible { background: var(--V); border-color: var(--V); color: #fff; }
+  .nav-cta {
+    font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 9px 20px; background: var(--ink); color: var(--cream);
+    border: 2px solid var(--ink); transition: all .2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--V); border-color: var(--V); }
+
+  .burger { display: none; flex-direction: column; gap: 5px; padding: 5px; }
+  .burger span { display: block; width: 22px; height: 2px; background: var(--ink); transition: all .3s; transform-origin: center; }
+  .burger:global(.open) span:first-child { transform: translateY(7px) rotate(45deg); }
+  .burger:global(.open) span:nth-child(2) { opacity: 0; }
+  .burger:global(.open) span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Amb 5 enllaços el menú no cap per sota de 900px → hamburguesa */
+  @media (max-width: 900px) {
+    .nav-links, .nav-lang, .nav-cta { display: none; }
+    .nav-r { margin-left: auto; }
+    .burger { display: flex; }
+  }
+</style>

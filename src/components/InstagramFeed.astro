@@ -1,0 +1,72 @@
+---
+// Últims posts d'Instagram. Es carreguen al navegador; si el feed falla, la secció queda amagada.
+import { getDict, SITE } from "../i18n";
+const t = getDict(Astro.currentLocale);
+---
+<div class="igf" id="igf" hidden
+     data-feed={SITE.beholdFeedUrl} data-max="4" data-fallback-alt={t.instagram.fallbackAlt}>
+  <div class="igf-top">
+    <h3 class="igf-h">{t.instagram.title}</h3>
+    <a class="igf-more" href={SITE.instagramUrl} target="_blank" rel="noopener">{t.instagram.more}</a>
+  </div>
+  <div class="igf-grid" id="igf-grid"></div>
+</div>
+
+<script>
+  import { fetchFeed } from "../lib/instagram";
+
+  const ICON_VIDEO = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  const ICON_ALBUM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="7" y="7" width="13" height="13" rx="1"/><path d="M4 16V5a1 1 0 011-1h11"/></svg>';
+
+  const box = document.getElementById("igf")!;
+  const grid = document.getElementById("igf-grid")!;
+  const { feed = "", max = "4", fallbackAlt = "" } = box.dataset;
+
+  fetchFeed(feed, Number(max), fallbackAlt)
+    .then((posts) => {
+      posts.forEach((p) => {
+        const a = document.createElement("a");
+        a.className = "igf-post";
+        a.href = p.href;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.setAttribute("aria-label", `Instagram @9apoble9: ${p.alt.slice(0, 80)}`);
+        const img = document.createElement("img");
+        img.src = p.img;
+        img.alt = p.alt;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.width = 400;
+        img.height = 500;
+        img.onerror = () => a.remove();
+        a.appendChild(img);
+        if (p.type === "VIDEO" || p.type === "CAROUSEL_ALBUM") {
+          const b = document.createElement("span");
+          b.className = "igf-badge";
+          b.setAttribute("aria-hidden", "true");
+          b.innerHTML = p.type === "VIDEO" ? ICON_VIDEO : ICON_ALBUM;
+          a.appendChild(b);
+        }
+        grid.appendChild(a);
+      });
+      if (posts.length) box.hidden = false;
+    })
+    .catch(() => { /* feed no disponible: queda amagat i es manté el botó @9apoble9 */ });
+</script>
+
+<style>
+  .igf { margin-top: clamp(36px, 5vw, 56px); border-top: 2px solid var(--ink); padding-top: clamp(22px, 3vw, 30px); }
+  .igf[hidden] { display: none; }
+  .igf-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .igf-h { font-family: var(--f-display); font-size: clamp(24px, 3.4vw, 36px); line-height: 1; color: var(--ink); }
+  .igf-more { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--V); transition: color .2s; }
+  .igf-more:hover { color: var(--ink); }
+  .igf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  /* Els posts es creen amb JS, per això els estils són globals dins de .igf-grid */
+  .igf-grid :global(.igf-post) { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--border); border: 2px solid var(--ink); }
+  .igf-grid :global(.igf-post img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s, filter .5s; filter: saturate(.85); }
+  .igf-grid :global(.igf-post:hover img), .igf-grid :global(.igf-post:focus-visible img) { transform: scale(1.05); filter: saturate(1); }
+  .igf-grid :global(.igf-badge) { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; background: rgba(26, 26, 26, .72); color: var(--cream); border-radius: 50%; }
+  .igf-grid :global(.igf-badge svg) { width: 13px; height: 13px; }
+  @media (max-width: 768px) { .igf-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

@@ -1,0 +1,67 @@
+---
+import { getDict } from "../i18n";
+import LangSwitch from "./LangSwitch.astro";
+import Icon from "./Icon.astro";
+const t = getDict(Astro.currentLocale);
+---
+<div class="mmenu" id="mm" role="dialog" aria-modal="true" aria-label={t.nav.menu}>
+  <button class="mmenu-close" data-close aria-label={t.nav.close}><Icon name="close" size={24} /></button>
+  <a href="#qui" data-close>{t.nav.about}</a>
+  <a href="#act" data-close>{t.nav.activities}</a>
+  <a href="#faq" data-close>{t.nav.faq}</a>
+  <a href="#res" data-close>{t.nav.book}</a>
+  <a href="#on" data-close>{t.nav.location}</a>
+  <LangSwitch variant="menu" />
+</div>
+
+<script>
+  const mm = document.getElementById("mm")!;
+  const burger = document.getElementById("burger")!;
+
+  const focusables = () =>
+    [...mm.querySelectorAll<HTMLElement>("a,button")].filter((el) => el.offsetParent !== null);
+
+  function openMM() {
+    mm.classList.add("open");
+    burger.classList.add("open");
+    burger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    focusables()[0]?.focus();
+  }
+  function closeMM() {
+    if (!mm.classList.contains("open")) return;
+    mm.classList.remove("open");
+    burger.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    burger.focus();
+  }
+
+  burger.addEventListener("click", () => (mm.classList.contains("open") ? closeMM() : openMM()));
+  mm.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeMM));
+
+  document.addEventListener("keydown", (e) => {
+    if (!mm.classList.contains("open")) return;
+    if (e.key === "Escape") { closeMM(); return; }
+    if (e.key === "Tab") {
+      const f = focusables();
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+</script>
+
+<style>
+  .mmenu {
+    position: fixed; inset: 0; z-index: 99; background: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-10px);
+    transition: opacity .3s, transform .3s, visibility 0s linear .3s;
+  }
+  .mmenu:global(.open) { opacity: 1; visibility: visible; pointer-events: all; transform: none; transition: opacity .3s, transform .3s, visibility 0s; }
+  .mmenu > a { font-family: var(--f-display); font-size: clamp(36px, 8vw, 52px); color: var(--cream); transition: color .2s; }
+  .mmenu > a:hover { color: var(--Vdk); }
+  .mmenu-close { position: absolute; top: 16px; right: 20px; padding: 8px; color: var(--cream); }
+</style>
