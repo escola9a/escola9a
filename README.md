@@ -1,10 +1,10 @@
 # Web 9apoble9 (Astro)
 
-Web estática hecha con [Astro](https://docs.astro.build), publicada en GitHub Pages.
+Web estática hecha con [Astro](https://docs.astro.build) y publicada en GitHub Pages. El dominio propio queda listo en la configuración; estará activo cuando se configure en GitHub Pages y se actualice el DNS.
 
-- Catalán: `https://escola9a.github.io/escola9a/`
-- Castellano: `https://escola9a.github.io/escola9a/es/`
-- Inglés: `https://escola9a.github.io/escola9a/en/`
+- Catalán: `https://escolaescalada9a.com/`
+- Castellano: `https://escolaescalada9a.com/es/`
+- Inglés: `https://escolaescalada9a.com/en/`
 
 ## Cambiar un texto
 
@@ -46,13 +46,13 @@ Para generar la web localmente:
 npm run build
 ```
 
-El resultado se crea en `dist/`. La configuración `base: "/escola9a"` es necesaria para publicar en la URL de proyecto de GitHub Pages.
+El resultado se crea en `dist/`. La configuración de Astro usa el dominio propio y la raíz del sitio como base.
 
-### Cambiar al dominio propio
+### Dominio propio
 
-Cuando se quiera publicar en `escolaescalada9a.com`, cambia `site` en `astro.config.mjs` a `https://escolaescalada9a.com` y elimina la opción `base`. Añade `public/CNAME` con el texto `escolaescalada9a.com` y configura el dominio personalizado y sus DNS según GitHub Pages. El sitio dejará de publicarse en la ruta `/escola9a`.
+En GitHub, configura `escolaescalada9a.com` como dominio personalizado en **Settings → Pages**. Después, en cdmon, apunta los registros `A` del dominio raíz (`@`) a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`. No cambies los nameservers ni elimines los registros de correo. La propagación puede tardar hasta 24 horas. Con el despliegue de GitHub Actions no hace falta añadir un archivo `CNAME` al repositorio.
 
-GitHub Pages no aplica el `.htaccess` del antiguo hosting cdmon. Si se cambia el DNS, las reglas configuradas allí, incluida la CSP, dejarán de aplicarse; configura las cabeceras de seguridad en un servicio compatible si siguen siendo necesarias.
+GitHub Pages no aplica el `.htaccess` del antiguo hosting cdmon. Al cambiar el DNS, las reglas configuradas allí, incluida la CSP, dejarán de aplicarse; configura las cabeceras de seguridad en un servicio compatible si siguen siendo necesarias.
 
 ## Estructura
 
@@ -69,7 +69,6 @@ src/
 ## Instagram
 
 Los últimos 4 posts vienen de Behold (plan gratis: 1.200 visualizaciones/mes, se actualiza cada 24 h).
-La CSP del `.htaccess` superior del servidor debe incluir `https://feeds.behold.so` en `connect-src`.
 Si el feed falla, la sección se oculta sola y queda el botón @9apoble9.
 
 ## Cuando haya base de datos (VPS)
