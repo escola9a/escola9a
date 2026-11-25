@@ -1,6 +1,6 @@
 ---
 // Icones SVG reutilitzades a diverses seccions.
-interface Props { name: "whatsapp" | "instagram" | "pin" | "map" | "close"; class?: string; size?: number }
+interface Props { name: "whatsapp" | "instagram" | "linkedin" | "pin" | "map" | "close"; class?: string; size?: number }
 const { name, class: cls, size = 16 } = Astro.props;
 ---
 {name === "whatsapp" && (
@@ -8,6 +8,9 @@ const { name, class: cls, size = 16 } = Astro.props;
 )}
 {name === "instagram" && (
   <svg class={cls} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+)}
+{name === "linkedin" && (
+  <svg class={cls} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-6M11.5 13.5a2.5 2.5 0 015 0v3"/></svg>
 )}
 {name === "pin" && (
   <svg class={cls} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>

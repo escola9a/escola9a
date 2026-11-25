@@ -21,6 +21,7 @@ export const SITE = {
   whatsapp: "34620081205",
   instagramUser: "9apoble9",
   instagramUrl: "https://instagram.com/9apoble9",
+  linkedinUrl: "https://www.linkedin.com/in/9a-escola-d-escalada-sccl-9a-poblenou-b52516447/",
   mapsUrl: "https://maps.google.com/?q=Carrer+d%27Espronceda+21+08005+Barcelona",
   addressLine1: "Carrer d'Espronceda, 21",
   addressLine2: "Sant Martí · 08005 Barcelona",
